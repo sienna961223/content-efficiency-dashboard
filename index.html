@@ -1281,32 +1281,25 @@
     }
     .creator-detail-btn:hover,.creator-detail-btn:focus-visible { background:var(--blue);color:#fff;outline:none; }
     .dashboard-filter-bar {
-      position:sticky;
-      top:64px;
-      z-index:1050;
       display:flex;
       align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      padding:10px clamp(18px,4vw,56px);
-      border-bottom:1px solid var(--line);
-      background:rgba(254,252,246,.94);
-      backdrop-filter:blur(14px);
-      box-shadow:0 6px 18px rgba(26,26,46,.035);
+      gap:8px;
+      min-width:0;
     }
-    .dashboard-filter-main { display:flex;align-items:center;gap:10px;min-width:0; }
+    .dashboard-filter-main { display:flex;align-items:center;gap:8px;min-width:0; }
     .dashboard-filter-main label { color:var(--ink-faint);font-size:.78rem;white-space:nowrap; }
     .dashboard-filter-select {
-      min-width:210px;
+      min-width:176px;
       border:1.5px solid rgba(43,127,216,.24);
       border-radius:8px;
-      padding:9px 34px 9px 12px;
+      padding:7px 32px 7px 11px;
       background:#fff;
       color:var(--ink);
       font:inherit;
+      font-size:.78rem;
       cursor:pointer;
     }
-    .dashboard-filter-status { color:var(--ink-soft);font-size:.78rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis; }
+    .dashboard-filter-status { display:none; }
     .sheet-toolbar {
       display:grid;
       grid-template-columns:minmax(240px,.7fr) minmax(220px,1fr) auto;
@@ -1508,7 +1501,7 @@
     .audience-dashboard{display:grid;grid-template-columns:160px minmax(0,1fr);gap:16px;align-items:start}.gender-donut-wrap{display:grid;justify-items:center;gap:8px}.gender-donut{width:118px;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:conic-gradient(#2b7fd8 0 var(--male),#f4d758 var(--male) 100%);position:relative}.gender-donut:after{content:'';width:68px;aspect-ratio:1;border-radius:50%;background:#fff;position:absolute}.gender-donut strong{z-index:1;font-size:1.08rem}.gender-legend{display:grid;gap:5px;font-size:.78rem}.gender-legend span{display:flex;align-items:center;gap:6px}.gender-legend i{width:9px;height:9px;border-radius:50%;background:#2b7fd8}.gender-legend span:last-child i{background:#f4d758}.audience-bars{display:grid;gap:12px}.audience-bar-group{display:grid;gap:7px}.audience-bar-group h5{margin:0;font-size:.82rem;color:var(--ink-soft)}.audience-bar{display:grid;grid-template-columns:88px minmax(0,1fr) 54px;gap:8px;align-items:center;font-size:.76rem}.audience-track{height:9px;border-radius:999px;background:rgba(43,127,216,.09);overflow:hidden}.audience-fill{height:100%;border-radius:inherit;background:#2b7fd8}.audience-bar:nth-child(3n) .audience-fill{background:#f4d758}.audience-bar:nth-child(4n) .audience-fill{background:#e84a5f}.audience-bar b{text-align:right;font-size:.76rem}.archive-money{color:#2b7fd8;font-family:'Fraunces','Noto Serif SC',serif}
     .creator-directory-tools{display:flex;align-items:center;gap:12px;margin-bottom:14px}.creator-directory-search{width:min(420px,100%);border:1.5px solid rgba(26,26,46,.12);border-radius:10px;padding:10px 14px;background:#fff;font:inherit}.creator-directory-search:focus{outline:none;border-color:#2b7fd8;box-shadow:0 0 0 3px rgba(43,127,216,.1)}.creator-directory-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.creator-directory-item{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:10px;padding:11px;border:1px solid var(--line);border-radius:12px;background:#fff;cursor:pointer;transition:transform .18s ease,border-color .18s ease}.creator-directory-item:hover{transform:translateY(-2px);border-color:rgba(43,127,216,.38)}.creator-directory-item img{width:44px;height:44px;border-radius:50%;object-fit:cover}.creator-directory-item strong,.creator-directory-item small{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.creator-directory-item small{font-size:.72rem;color:var(--ink-faint)}.creator-directory-status{font-size:.68rem;color:#2b7fd8}.creator-directory-status.missing{color:#e84a5f}
     @media(max-width:900px){.creator-window{left:16px!important;top:72px!important;width:calc(100vw - 32px);max-height:calc(100vh - 88px)}.archive-grid{grid-template-columns:1fr}.archive-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.audience-dashboard{grid-template-columns:1fr}.gender-donut-wrap{grid-template-columns:auto 1fr;align-items:center;justify-content:start}.creator-directory-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-    @media(max-width:760px){.dashboard-filter-bar{top:56px;align-items:stretch;flex-direction:column;gap:6px}.dashboard-filter-main{width:100%}.dashboard-filter-select{min-width:0;flex:1}.dashboard-filter-status{white-space:normal}}
+    @media(max-width:760px){.app-header{align-items:flex-start}.header-meta{gap:6px}.dashboard-filter-main label{display:none}.dashboard-filter-select{min-width:132px;max-width:42vw}.pill{display:none}}
     @media(prefers-reduced-motion:reduce){.creator-window,.podium-card[data-creator-card],.creator-card[data-creator-card],.potential-row[data-creator-card],.pure-creator-card[data-creator-card]{transition:none!important}}
     /* CREATOR_ARCHIVE_WINDOWS_END */
   </style>
@@ -1517,6 +1510,13 @@
   <header class="app-header">
     <div class="brand"><img class="brand-logo" src="assets/avatar.png" alt="Sienna IP logo"><h1>内容投产效率复盘台｜RMB校正版</h1></div>
     <div class="header-meta">
+      <div class="dashboard-filter-bar">
+        <div class="dashboard-filter-main">
+          <label for="globalBdFilter">BD负责人</label>
+          <select class="dashboard-filter-select" id="globalBdFilter"><option value="全部店">全部店</option></select>
+        </div>
+        <div class="dashboard-filter-status" id="globalBdFilterStatus">全部店口径：BD内容 + 纯佣</div>
+      </div>
       <span class="pill">5/20 - 8/23</span>
       <span class="pill yellow">1 USD = 6.79 RMB</span>
       <span class="pill red">爆量线 RMB ≥ 5000</span>
@@ -1533,13 +1533,6 @@
     <button class="tab" data-tab="booms">爆款明细</button>
     <button class="tab" data-tab="sheet">明细表格</button>
   </nav>
-  <div class="dashboard-filter-bar">
-    <div class="dashboard-filter-main">
-      <label for="globalBdFilter">BD负责人</label>
-      <select class="dashboard-filter-select" id="globalBdFilter"><option value="全部店">全部店</option></select>
-    </div>
-    <div class="dashboard-filter-status" id="globalBdFilterStatus">全部店口径：BD内容 + 纯佣</div>
-  </div>
   <main>
     <section data-view="overview" class="active">
       <div class="hero">
